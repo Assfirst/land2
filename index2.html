@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>โรงเรียนปลวกแดงวิทยาคม</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #008B8B;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            color: #FFD700;
+            font-size: 1.8rem;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+        }
+
+        nav ul li a {
+            color: #FFD700;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #fff;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            color: #FFD700;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: url('https://kumonpluakdaeng.com/wp-content/uploads/2024/03/603093.jpg') no-repeat center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 139, 139, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-btn {
+            background-color: #FFD700;
+            color: #008B8B;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #fff;
+            color: #008B8B;
+        }
+
+        /* Slideshow Section (ปรับขนาดฟรีไซต์) */
+        .slideshow {
+            position: relative;
+            width: 100%;
+            max-width: 1200px; /* จำกัดความกว้างสูงสุด */
+            margin: 0 auto; /* จัดกึ่งกลาง */
+            aspect-ratio: 16 / 9; /* สัดส่วน 16:9 */
+            max-height: 600px; /* จำกัดความสูงสูงสุด */
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        .slides {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide:nth-child(1) {
+            background: url('https://www.pdp.ac.th/picture/SlidShow/1.jpg') no-repeat center/cover;
+        }
+
+        .slide:nth-child(2) {
+            background: url('https://www.pdp.ac.th/picture/SlidShow/2.jpg') no-repeat center/cover;
+        }
+
+        .slide:nth-child(3) {
+            background: url('https://www.pdp.ac.th/picture/SlidShow/3.jpg') no-repeat center/cover;
+        }
+
+        /* Info Section */
+        .info {
+            padding: 3rem 2rem;
+            text-align: center;
+            background-color: #fff;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .info h3 {
+            color: #008B8B;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+
+        .info p {
+            max-width: 800px;
+            font-size: 1.2rem;
+        }
+
+        .info-img {
+            width: 300px;
+            height: 200px;
+            background: url('https://kumonpluakdaeng.com/wp-content/uploads/2024/03/44972116_576281059452744_6348708884718288896_n.jpg') no-repeat center/cover;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #008B8B;
+            color: #FFD700;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .footer-img {
+            width: 100px;
+            height: 100px;
+            background: url('https://www.pdp.ac.th/picture/picFor%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5/1.jpg') no-repeat center/contain;
+            margin: 0 auto 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background-color: #008B8B;
+                width: 100%;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 1rem 0;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .hero-content {
+                padding: 1rem;
+            }
+
+            .slideshow {
+                max-width: 100%;
+                aspect-ratio: 4 / 3; /* ปรับสัดส่วนในมือถือ */
+                max-height: 400px;
+            }
+
+            .info-img {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>โรงเรียนปลวกแดงวิทยาคม</h1>
+        <nav>
+            <div class="hamburger">☰</div>
+            <ul id="nav-menu">
+                <li><a href="#">หน้าแรก</a></li>
+                <li><a href="#">เกี่ยวกับเรา</a></li>
+                <li><a href="#">ติดต่อ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>ยินดีต้อนรับสู่โรงเรียนปลวกแดงวิทยาคม</h2>
+            <p>"เรียนรู้สู่อนาคต พัฒนาสู่ความสำเร็จ"</p>
+            <a href="#" class="cta-btn">สมัครเรียนเลย</a>
+        </div>
+    </section>
+
+    <!-- Slideshow Section -->
+    <section class="slideshow">
+        <div class="slides">
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info">
+        <h3>เกี่ยวกับโรงเรียน</h3>
+        <div class="info-img"></div>
+        <p>โรงเรียนปลวกแดงวิทยาคมเป็นสถานศึกษาที่มุ่งมั่นพัฒนาการเรียนรู้ของนักเรียนให้มีคุณภาพ พร้อมก้าวสู่โลกยุคใหม่ด้วยเทคโนโลยีและนวัตกรรม</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-img"></div>
+        <p>ที่อยู่: 123 หมู่ 5 ต.ปลวกแดง อ.ปลวกแดง จ.ระยอง | โทร: 038-123-456</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Hamburger Menu
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('#nav-menu');
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Slideshow
+        const slides = document.querySelector('.slides');
+        let slideIndex = 0;
+        const totalSlides = 3;
+
+        function showSlide(index) {
+            slideIndex = (index + totalSlides) % totalSlides;
+            slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(slideIndex + 1);
+        }
+
+        setInterval(nextSlide, 9000);
+        showSlide(slideIndex);
+    </script>
+</body>
+</html>
